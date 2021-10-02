@@ -39,25 +39,33 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.initializeApolloServer = void 0;
 var apollo_server_express_1 = require("apollo-server-express");
+var apollo_server_core_1 = require("apollo-server-core");
 var apollo_server_express_2 = require("apollo-server-express");
 var vacancies_1 = require("./vacancies");
 var unsplash_api_1 = require("../utils/unsplash.api");
+var http_1 = __importDefault(require("http"));
 var defaultTypeDefs = apollo_server_express_2.gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  type Query {\n    _empty: String\n  }\n"], ["\n  type Query {\n    _empty: String\n  }\n"])));
 var schema = apollo_server_express_1.makeExecutableSchema({
     typeDefs: [defaultTypeDefs, vacancies_1.vancancy_type_defs],
     resolvers: [vacancies_1.vacancy_resolvers],
 });
 var initializeApolloServer = function (app) { return __awaiter(void 0, void 0, void 0, function () {
-    var apolloServer;
+    var httpServer, apolloServer;
     return __generator(this, function (_a) {
+        httpServer = http_1.default.createServer(app);
         apolloServer = new apollo_server_express_1.ApolloServer({
             schema: schema,
             context: {
                 all_photos: unsplash_api_1.getAllPhotos,
             },
+            //@ts-ignore
+            plugins: [apollo_server_core_1.ApolloServerPluginDrainHttpServer({ httpServer: httpServer })],
         });
         apolloServer.applyMiddleware({ app: app });
         console.log("APOLLO SERVER INITIALIZED");

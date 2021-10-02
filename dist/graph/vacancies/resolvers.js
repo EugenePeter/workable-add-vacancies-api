@@ -69,17 +69,8 @@ exports.vacancy_resolvers = {
     // },
     },
     Mutation: {
-        // createCompany: async (_: any, { params }: any) => {
-        //   console.log("ARG:", params);
-        //   const company = Vacancies.build({
-        //     ...params,
-        //   });
-        //   await company.save();
-        //   console.log("COMPANY:", company);
-        //   return company;
-        // },
         addVacancy: function (_, args) { return __awaiter(void 0, void 0, void 0, function () {
-            var params, vacancies;
+            var params, vacancies, result;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -91,7 +82,8 @@ exports.vacancy_resolvers = {
                     case 1:
                         _a.sent();
                         console.log("VACANCIES", vacancies);
-                        return [2 /*return*/];
+                        result = __assign({ message: "Succcessfully added " + vacancies.vacancy + " to vacancies", success: true }, vacancies);
+                        return [2 /*return*/, result];
                 }
             });
         }); },

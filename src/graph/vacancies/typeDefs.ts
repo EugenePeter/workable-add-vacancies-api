@@ -39,11 +39,14 @@ export const vancancy_type_defs = gql`
     company_id: String!
   }
 
-  type Test2 {
+  type AddVacancyResult {
     message: String
+    success: Boolean
+    id: String
+    _id: String
   }
 
   type Mutation {
-    addVacancy(params: AddVacancyParams): Test2
+    addVacancy(params: AddVacancyParams): AddVacancyResult
   }
 `;

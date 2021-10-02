@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@types/node-fetch": "^2.5.10",
+    "apollo-server-core": "^3.3.0",
     "apollo-server-express": "^2.23.0",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",

@@ -20,15 +20,6 @@ export const vacancy_resolvers = {
     // },
   },
   Mutation: {
-    // createCompany: async (_: any, { params }: any) => {
-    //   console.log("ARG:", params);
-    //   const company = Vacancies.build({
-    //     ...params,
-    //   });
-    //   await company.save();
-    //   console.log("COMPANY:", company);
-    //   return company;
-    // },
     addVacancy: async (_: any, args: any) => {
       const { params } = args;
       console.log("ARG:", args);
@@ -38,6 +29,12 @@ export const vacancy_resolvers = {
       });
       await vacancies.save();
       console.log("VACANCIES", vacancies);
+      const result = {
+        message: `Succcessfully added ${vacancies.vacancy} to vacancies`,
+        success: true,
+        ...vacancies,
+      };
+      return result;
     },
   },
 };
