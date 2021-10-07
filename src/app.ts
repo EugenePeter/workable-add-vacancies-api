@@ -14,7 +14,7 @@ const { CONNECTIONSTRING } =
 
 const startServer = async () => {
   const app = express();
-  app.get("/", expressPlayground({ endpoint: "/graphql" }));
+  app.post("/", expressPlayground({ endpoint: "/graphql" }));
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
 

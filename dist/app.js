@@ -55,7 +55,7 @@ var startServer = function () { return __awaiter(void 0, void 0, void 0, functio
         switch (_a.label) {
             case 0:
                 app = express_1.default();
-                app.get("/", graphql_playground_middleware_express_1.default({ endpoint: "/graphql" }));
+                app.post("/", graphql_playground_middleware_express_1.default({ endpoint: "/graphql" }));
                 app.use(express_1.default.urlencoded({ extended: false }));
                 app.use(express_1.default.json());
                 corsOptions = {

@@ -70,20 +70,27 @@ exports.vacancy_resolvers = {
     },
     Mutation: {
         addVacancy: function (_, args) { return __awaiter(void 0, void 0, void 0, function () {
-            var params, vacancies, result;
+            var params, vacancies, result, e_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         params = args.params;
-                        console.log("ARG:", args);
                         console.log("PARAMS:", params);
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
                         vacancies = utils_1.Vacancies.build(__assign({}, params));
                         return [4 /*yield*/, vacancies.save()];
-                    case 1:
+                    case 2:
                         _a.sent();
-                        console.log("VACANCIES", vacancies);
                         result = __assign({ message: "Succcessfully added " + vacancies.vacancy + " to vacancies", success: true }, vacancies);
-                        return [2 /*return*/, result];
+                        console.log("VACANCIES RESULTS", vacancies);
+                        return [2 /*return*/, vacancies];
+                    case 3:
+                        e_1 = _a.sent();
+                        console.log("MUTATION ERROR:", e_1);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
                 }
             });
         }); },

@@ -22,19 +22,23 @@ export const vacancy_resolvers = {
   Mutation: {
     addVacancy: async (_: any, args: any) => {
       const { params } = args;
-      console.log("ARG:", args);
       console.log("PARAMS:", params);
-      const vacancies = Vacancies.build({
-        ...params,
-      });
-      await vacancies.save();
-      console.log("VACANCIES", vacancies);
-      const result = {
-        message: `Succcessfully added ${vacancies.vacancy} to vacancies`,
-        success: true,
-        ...vacancies,
-      };
-      return result;
+      try {
+        const vacancies = Vacancies.build({
+          ...params,
+        });
+        await vacancies.save();
+        const result = {
+          message: `Succcessfully added ${vacancies.vacancy} to vacancies`,
+          success: true,
+          ...vacancies,
+        };
+        console.log("VACANCIES RESULTS", vacancies);
+        return vacancies;
+        // return result;
+      } catch (e) {
+        console.log("MUTATION ERROR:", e);
+      }
     },
   },
 };
