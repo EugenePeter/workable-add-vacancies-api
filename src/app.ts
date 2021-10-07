@@ -14,7 +14,7 @@ const { CONNECTIONSTRING } =
 
 const startServer = async () => {
   const app = express();
-  // app.get("/", expressPlayground({ endpoint: "/graphql" }));
+  app.get("/", expressPlayground({ endpoint: "/graphql" }));
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
 
@@ -35,7 +35,10 @@ const startServer = async () => {
 
   try {
     //@ts-ignore
-    await mongoose.connect(CONNECTIONSTRING);
+    await mongoose.connect(CONNECTIONSTRING, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     console.log("CONNECTED TO MONGODB");
   } catch (e) {
     console.log("error:", e);

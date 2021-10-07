@@ -41,6 +41,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var dotenv_1 = __importDefault(require("dotenv"));
+var graphql_playground_middleware_express_1 = __importDefault(require("graphql-playground-middleware-express"));
 var graph_1 = require("./graph");
 var routes_1 = __importDefault(require("./routes"));
 var cors_1 = __importDefault(require("cors"));
@@ -54,7 +55,7 @@ var startServer = function () { return __awaiter(void 0, void 0, void 0, functio
         switch (_a.label) {
             case 0:
                 app = express_1.default();
-                // app.get("/", expressPlayground({ endpoint: "/graphql" }));
+                app.get("/", graphql_playground_middleware_express_1.default({ endpoint: "/graphql" }));
                 app.use(express_1.default.urlencoded({ extended: false }));
                 app.use(express_1.default.json());
                 corsOptions = {
@@ -74,7 +75,10 @@ var startServer = function () { return __awaiter(void 0, void 0, void 0, functio
             case 1:
                 _a.trys.push([1, 3, , 4]);
                 //@ts-ignore
-                return [4 /*yield*/, mongoose_1.default.connect(CONNECTIONSTRING)];
+                return [4 /*yield*/, mongoose_1.default.connect(CONNECTIONSTRING, {
+                        useNewUrlParser: true,
+                        useUnifiedTopology: true,
+                    })];
             case 2:
                 //@ts-ignore
                 _a.sent();
