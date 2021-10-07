@@ -17,8 +17,7 @@ export const vacancy_resolvers = {
           ...vacancies,
         };
         console.log("VACANCIES RESULTS", vacancies);
-        return vacancies;
-        // return result;
+        return result;
       } catch (e) {
         console.log("MUTATION ERROR:", e);
       }

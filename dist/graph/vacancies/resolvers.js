@@ -50,24 +50,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.vacancy_resolvers = void 0;
 var utils_1 = require("../../utils");
 exports.vacancy_resolvers = {
-    Query: {
-    // doesEmailExist: async (parent: any, { email }: any, context: any) => {
-    //   console.log("PARENT:", parent);
-    //   const result = await Company.findOne({ email });
-    //   console.log("doesEmailExist result:", result);
-    //   if (result) throw new Error("email exist");
-    //   try {
-    //     console.log("GRAPH EMAIL:", email);
-    //     const result = await Vacancies.findOne({ email });
-    //     console.log("doesEmailExist result:", result);
-    //     if (result) throw new Error("email exist");
-    //   } catch (e) {
-    //     console.log("EMAIL ALREADY EXIST", e);
-    //     return e;
-    //   }
-    //   return result;
-    // },
-    },
+    Query: {},
     Mutation: {
         addVacancy: function (_, args) { return __awaiter(void 0, void 0, void 0, function () {
             var params, vacancies, result, e_1;
@@ -85,7 +68,7 @@ exports.vacancy_resolvers = {
                         _a.sent();
                         result = __assign({ message: "Succcessfully added " + vacancies.vacancy + " to vacancies", success: true }, vacancies);
                         console.log("VACANCIES RESULTS", vacancies);
-                        return [2 /*return*/, vacancies];
+                        return [2 /*return*/, result];
                     case 3:
                         e_1 = _a.sent();
                         console.log("MUTATION ERROR:", e_1);

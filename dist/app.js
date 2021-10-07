@@ -48,7 +48,7 @@ var cors_1 = __importDefault(require("cors"));
 var mongoose_1 = __importDefault(require("mongoose"));
 dotenv_1.default.config();
 var CONNECTIONSTRING = (process.env ||
-    "mongodb+srv://workableCompanyList:0HCuQLITK1ncdo3v@cluster0.khdnm.mongodb.net/workable-signup-api?retryWrites=true&w=majority").CONNECTIONSTRING;
+    "mongodb+srv://workableCompanyList:0HCuQLITK1ncdo3v@cluster0.khdnm.mongodb.net/workable-vacancies?retryWrites=true&w=majority").CONNECTIONSTRING;
 var startServer = function () { return __awaiter(void 0, void 0, void 0, function () {
     var app, corsOptions, e_1;
     return __generator(this, function (_a) {
@@ -73,7 +73,7 @@ var startServer = function () { return __awaiter(void 0, void 0, void 0, functio
                 });
                 _a.label = 1;
             case 1:
-                _a.trys.push([1, 3, , 4]);
+                _a.trys.push([1, 4, , 5]);
                 //@ts-ignore
                 return [4 /*yield*/, mongoose_1.default.connect(CONNECTIONSTRING, {
                         useNewUrlParser: true,
@@ -83,16 +83,18 @@ var startServer = function () { return __awaiter(void 0, void 0, void 0, functio
                 //@ts-ignore
                 _a.sent();
                 console.log("CONNECTED TO MONGODB");
-                graph_1.initializeApolloServer(app);
+                return [4 /*yield*/, graph_1.initializeApolloServer(app)];
+            case 3:
+                _a.sent();
                 app.listen(process.env.PORT, function () {
                     console.log("apps is running on PORT: " + process.env.PORT);
                 });
-                return [3 /*break*/, 4];
-            case 3:
+                return [3 /*break*/, 5];
+            case 4:
                 e_1 = _a.sent();
                 console.log("error:", e_1);
-                return [3 /*break*/, 4];
-            case 4: return [2 /*return*/];
+                return [3 /*break*/, 5];
+            case 5: return [2 /*return*/];
         }
     });
 }); };
