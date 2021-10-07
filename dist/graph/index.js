@@ -48,7 +48,6 @@ var apollo_server_express_1 = require("apollo-server-express");
 var apollo_server_core_1 = require("apollo-server-core");
 var apollo_server_express_2 = require("apollo-server-express");
 var vacancies_1 = require("./vacancies");
-var unsplash_api_1 = require("../utils/unsplash.api");
 var http_1 = __importDefault(require("http"));
 var defaultTypeDefs = apollo_server_express_2.gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  type Query {\n    _empty: String\n  }\n"], ["\n  type Query {\n    _empty: String\n  }\n"])));
 var schema = apollo_server_express_1.makeExecutableSchema({
@@ -61,9 +60,7 @@ var initializeApolloServer = function (app) { return __awaiter(void 0, void 0, v
         httpServer = http_1.default.createServer(app);
         apolloServer = new apollo_server_express_1.ApolloServer({
             schema: schema,
-            context: {
-                all_photos: unsplash_api_1.getAllPhotos,
-            },
+            context: {},
             //@ts-ignore
             plugins: [apollo_server_core_1.ApolloServerPluginDrainHttpServer({ httpServer: httpServer })],
         });

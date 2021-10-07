@@ -8,9 +8,9 @@ import cors from "cors";
 import mongoose from "mongoose";
 dotenv.config();
 
-const {
-  CONNECTIONSTRING = "mongodb+srv://workableVacancies:200800462@cluster0.khdnm.mongodb.net/workable-vacancies?retryWrites=true&w=majority",
-} = process.env;
+const { CONNECTIONSTRING } =
+  process.env ||
+  "mongodb+srv://workableCompanyList:0HCuQLITK1ncdo3v@cluster0.khdnm.mongodb.net/workable-signup-api?retryWrites=true&w=majority";
 
 const startServer = async () => {
   const app = express();
@@ -34,6 +34,7 @@ const startServer = async () => {
   });
 
   try {
+    //@ts-ignore
     await mongoose.connect(CONNECTIONSTRING);
     console.log("CONNECTED TO MONGODB");
   } catch (e) {

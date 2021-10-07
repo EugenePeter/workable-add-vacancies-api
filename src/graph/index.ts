@@ -3,7 +3,6 @@ import { ApolloServerPluginDrainHttpServer } from "apollo-server-core";
 import { gql } from "apollo-server-express";
 
 import { vacancy_resolvers, vancancy_type_defs } from "./vacancies";
-import { getAllPhotos } from "../utils/unsplash.api";
 
 import http from "http";
 
@@ -22,9 +21,7 @@ export const initializeApolloServer = async (app: any) => {
   const httpServer = http.createServer(app);
   const apolloServer = new ApolloServer({
     schema,
-    context: {
-      all_photos: getAllPhotos,
-    },
+    context: {},
     //@ts-ignore
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   });
