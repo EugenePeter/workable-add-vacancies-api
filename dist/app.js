@@ -83,17 +83,16 @@ var startServer = function () { return __awaiter(void 0, void 0, void 0, functio
                 //@ts-ignore
                 _a.sent();
                 console.log("CONNECTED TO MONGODB");
+                graph_1.initializeApolloServer(app);
+                app.listen(process.env.PORT, function () {
+                    console.log("apps is running on PORT: " + process.env.PORT);
+                });
                 return [3 /*break*/, 4];
             case 3:
                 e_1 = _a.sent();
                 console.log("error:", e_1);
                 return [3 /*break*/, 4];
-            case 4:
-                graph_1.initializeApolloServer(app);
-                app.listen(process.env.PORT, function () {
-                    console.log("apps is running on PORT: " + process.env.PORT);
-                });
-                return [2 /*return*/];
+            case 4: return [2 /*return*/];
         }
     });
 }); };
