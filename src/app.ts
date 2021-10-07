@@ -10,7 +10,7 @@ dotenv.config();
 
 const { CONNECTIONSTRING } =
   process.env ||
-  "mongodb+srv://workableCompanyList:0HCuQLITK1ncdo3v@cluster0.khdnm.mongodb.net/workable-signup-api?retryWrites=true&w=majority";
+  "mongodb+srv://workableCompanyList:0HCuQLITK1ncdo3v@cluster0.khdnm.mongodb.net/workable-vacancies?retryWrites=true&w=majority";
 
 const startServer = async () => {
   const app = express();
@@ -40,7 +40,7 @@ const startServer = async () => {
       useUnifiedTopology: true,
     });
     console.log("CONNECTED TO MONGODB");
-    initializeApolloServer(app);
+    await initializeApolloServer(app);
     app.listen(process.env.PORT, () => {
       console.log(`apps is running on PORT: ${process.env.PORT}`);
     });
